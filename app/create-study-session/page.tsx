@@ -53,8 +53,8 @@ export default function CreateStudySessionPage() {
 
       const data = await res.json();
       
-      // Redirect to run page to see live updates
-      router.push(`/agent/run?runId=${data.runId}`);
+      // Redirect to run page with runId as path parameter
+      router.push(`/agent/run/${data.runId}`);
     } catch (err: any) {
       setError(err?.message || 'Failed to create study session');
       setLoading(false);
@@ -62,12 +62,12 @@ export default function CreateStudySessionPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
       <div className="w-full max-w-2xl">
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-10">
+          <div className="bg-linear-to-r from-purple-500 to-pink-500 px-8 py-10">
             <h1 className="text-3xl font-bold text-white mb-2">Create Study Session</h1>
             <p className="text-purple-50 text-sm">Set up your personalized study plan with AI coaching</p>
           </div>
@@ -102,7 +102,7 @@ export default function CreateStudySessionPage() {
               {/* Goal Input */}
               <div>
                 <label htmlFor="goal" className="block text-sm font-semibold text-slate-700 mb-2">
-                  What's your learning goal? <span className="text-red-500">*</span>
+                  What&apos;s your learning goal? <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="goal"
@@ -177,7 +177,7 @@ export default function CreateStudySessionPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 disabled:opacity-50 transition transform hover:scale-105 active:scale-95"
+                className="w-full px-6 py-4 bg-linear-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 disabled:opacity-50 transition transform hover:scale-105 active:scale-95"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">

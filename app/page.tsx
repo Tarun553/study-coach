@@ -13,11 +13,11 @@ export default function HomePage() {
   if (!isClient) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Navigation */}
       <nav className="border-b border-slate-700 bg-slate-900 bg-opacity-50 backdrop-blur sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+          <div className="text-2xl font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
             Study Coach
           </div>
           <Link href="/create-study-session" className="px-6 py-2 bg-purple-500 rounded-lg hover:bg-purple-600 transition text-white font-semibold">
@@ -33,7 +33,7 @@ export default function HomePage() {
           <div className="space-y-8">
             <div>
               <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Learn Smarter with <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">AI Coaching</span>
+                Learn Smarter with <span className="bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">AI Coaching</span>
               </h1>
               <p className="text-xl text-slate-300 mb-8">
                 Your personal AI study coach creates customized learning plans, suggests resources, and keeps you on track with intelligent reminders.
@@ -42,7 +42,7 @@ export default function HomePage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/create-study-session" className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg hover:from-purple-600 hover:to-pink-600 transition text-white font-semibold text-lg">
+              <Link href="/create-study-session" className="px-8 py-4 bg-linear-to-r from-purple-500 to-pink-500 rounded-lg hover:from-purple-600 hover:to-pink-600 transition text-white font-semibold text-lg">
                 Create Study Session 🚀
               </Link>
               <Link href="/agent/run" className="px-8 py-4 border-2 border-slate-500 rounded-lg hover:border-slate-400 transition text-white font-semibold text-lg">
@@ -103,7 +103,7 @@ export default function HomePage() {
             ].map((feature, i) => (
               <div key={i} className="bg-slate-800 bg-opacity-50 backdrop-blur border border-slate-700 rounded-xl p-5 hover:border-slate-600 transition hover:bg-slate-800 hover:bg-opacity-70">
                 <div className="flex items-start gap-4">
-                  <span className="text-3xl flex-shrink-0">{feature.icon}</span>
+                  <span className="text-3xl shrink-0">{feature.icon}</span>
                   <div>
                     <h3 className="font-semibold text-white mb-1">{feature.title}</h3>
                     <p className="text-slate-400 text-sm">{feature.desc}</p>
@@ -116,7 +116,7 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="bg-gradient-to-b from-transparent to-slate-900 py-20">
+      <section className="bg-linear-to-b from-transparent to-slate-900 py-20">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-white mb-4 text-center">How It Works</h2>
           <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
@@ -155,7 +155,7 @@ export default function HomePage() {
             ].map((step, i) => (
               <div key={i} className="relative">
                 <div className="bg-slate-800 bg-opacity-50 backdrop-blur border border-slate-700 rounded-xl p-8">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
+                  <div className="w-12 h-12 bg-linear-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                     {step.num}
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
@@ -181,7 +181,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-12 text-center">
+        <div className="bg-linear-to-r from-purple-600 to-pink-600 rounded-2xl p-12 text-center">
           <h2 className="text-4xl font-bold text-white mb-4">Ready to Learn Smarter?</h2>
           <p className="text-purple-100 mb-8 text-lg">Create your first personalized study session today</p>
           <Link href="/create-study-session" className="inline-block px-8 py-4 bg-white text-purple-600 rounded-lg hover:bg-slate-100 transition font-semibold text-lg">

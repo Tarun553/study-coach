@@ -11,7 +11,7 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 // Model for chat completions
 export const chatModel = genAI.getGenerativeModel({
-  model: "gemini-3-flash-preview",
+  model: "gemini-2.5-flash",
 });
 
 export default genAI;
