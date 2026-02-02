@@ -1,0 +1,108 @@
+
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
+  email     String?  @unique
+  name      String?
+
+  runs      AgentRun[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AgentRun {
+  id            String   @id @default(cuid())
+
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  topic         String
+  goal          String?
+  timeAvailable String?
+
+  status        AgentRunStatus @default(RUNNING)
+  iteration     Int      @default(0)
+
+  state         Json?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  logs          AgentStepLog[]
+  tasks         StudyTask[]
+  resources     Resource[]
+  reminders     ReminderJob[]
+
+  @@index([userId, createdAt])
+}
+
+model AgentStepLog {
+  id        String   @id @default(cuid())
+  runId     String
+  run       AgentRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  kind      String
+  payload   Json
+
+  createdAt DateTime @default(now())
+
+  @@index([runId, createdAt])
+}
+
+model StudyTask {
+  id        String   @id @default(cuid())
+  runId     String
+  run       AgentRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  title     String
+  done      Boolean  @default(false)
+  order     Int
+
+  createdAt DateTime @default(now())
+
+  @@unique([runId, order])
+}
+
+model Resource {
+  id        String   @id @default(cuid())
+  runId     String
+  run       AgentRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  title     String
+  url       String
+
+  createdAt DateTime @default(now())
+
+  @@unique([runId, url])
+}
+
+
+model ReminderJob {
+  id        String   @id @default(cuid())
+  runId     String
+  run       AgentRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  
+  minutes   Int
+  sent      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([runId, createdAt])
+}
+
+
+enum AgentRunStatus {
+  RUNNING
+  COMPLETED
+  FAILED
+}
